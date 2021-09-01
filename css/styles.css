@@ -1,0 +1,276 @@
+:root {
+  --blanco: #ffffff;
+  --oscuro: #212121;
+  --primario: #ffc107;
+  --secundario: #0097a7;
+  --gris: #757575;
+}
+/* GLOBALES*/
+html {
+  font-size: 62.5%;
+  box-sizing: border-box; /* Hack para Box model, permite que el tamaño de toda la caja no cambie al cambiar selectores como padding etc */
+  scroll-snap-type: y proximity; /**/
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-size: 16px; /* 1 rem =10px*/
+  font-family: "Krub", sans-serif; /* LO ponemos aquí para que lo aplique de forma general a todo el documento*/
+  background-image: linear-gradient(
+    to top,
+    #dfe9f3 0%,
+    var(--blanco) 100%
+  ); /* Le da un degradado al fondo en la parte superior más claro y en la parte inferior un poco más opaco */
+}
+
+.contenedor {
+  max-width: 120rem;
+
+  /*margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto;
+
+    margin: 0 auto 0 auto; /* Esto es lo mismo resumido que las 4 lineas anteriores*/
+
+  margin: 0 auto; /* Esto es lo mismo resumido que la linea anterior*/
+}
+
+.boton {
+  background-color: var(--secundario); /* Color de fondo */
+  color: var(--blanco); /* Color de las letras */
+  padding: 1rem 3rem; /* distancia del marco hacia dentro */
+  margin-top: 1rem; /* Distancia para que se separe de la linea de texto (elemento) anterior */
+  font-size: 2rem; /* Tamaño de la fuenta más grande */
+  text-decoration: none; /* QUita la linea inferior que traen por dfecto los enlaces */
+  text-transform: uppercase; /* ponemos en mayusculas */
+  font-weight: bold; /*  */
+  border-radius: 0.5rem; /* Para redondear las esquinas */
+  width: 90%; /* Ajustar el tamaño del recuadro */
+  text-align: center; /* Centrar el texto del boton */
+  border: none;
+}
+
+@media (min-width: 768px) {
+  .boton {
+    width: auto; /* Para que el tamaño del cuadro del boton se ajuste a la medida de la pantalla */
+  }
+}
+
+.boton:hover{ /*hover es una "acción" que se realiza cuando se pone el cursor sobre un elemento*/
+  cursor: pointer;/*con esto el cursor aparece como una mano encima del boton*/
+}
+
+.sombra{ /*Usamos esta clase para darle estilo al main poner sombra y redondear*/
+  -webkit-box-shadow: 0px 5px 15px 0px rgba(112, 112, 112, 0.55); /* para chrome */
+  -moz-box-shadow: 0px 5px 15px 0px rgba(112, 112, 112, 0.55); /* para firefox */
+  box-shadow: 0px 5px 15px 0px rgba(112, 112, 112, 0.55);
+
+  background-color: var(--blanco);
+  padding: 2rem;
+  border-radius: 1rem; /* redondear las esquinas */
+}
+/* Tipografia */
+
+h1 {
+  font-size: 3.8rem;
+}
+
+h2 {
+  font-size: 2.8rem;
+}
+h3 {
+  font-size: 1.8rem;
+}
+
+h1,
+h2,
+h3 {
+  text-align: center;
+}
+.titulo {
+  color: var(--oscuro);
+  text-align: center;
+}
+
+.titulo span {
+  font-size: 2rem;
+}
+
+/*  ***UTILIDADES***/
+
+.w-100{
+  width: 100%;
+}
+@media (min-width: 768px) { /*Para que el boton no tome todo el espacio disponible*/
+      .w-100{
+        width: auto;
+      }
+}
+.flex{
+ display: flex;
+}
+
+.alinear-derecha{
+  justify-content: flex-end;
+
+}
+
+/* Navegación Principal */
+.nav-bg {
+  background-color: #0097a7;
+}
+
+.nav-bg {
+  background-color: var(--secundario);
+}
+
+.navegacion-principal {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .navegacion-principal {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+.navegacion-principal a {
+  display: block;
+  text-align: center;
+  color: var(--blanco);
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: 700;
+  padding: 1rem;
+}
+
+.navegacion-principal a:hover { /*hover es una "acción" que se realiza cuando se pone el cursor sobre un elemento*/
+  background-color: var(--primario);
+  color: var(--oscuro);
+}
+
+/* Imagen HERO */
+.hero {
+  background-image: url(../img/hero.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 450px;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.contenido-hero {
+  position: absolute;
+  background-color: rgb(0, 0, 0, 0.7); /* anterior*/
+  background-color: rgb(0 0 0 /70%);
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.contenido-hero h2,
+.contenido-hero p {
+  color: var(--blanco);
+}
+/*SCROLL SNAP*/
+.servicios,
+.navegacion-principal,
+.formulario{
+  scroll-snap-align: center;
+  scroll-snap-stop:always ;
+}
+
+
+/**Servicios* */
+@media (min-width: 780px) {
+    .servicios{
+        display: grid;
+        grid-template-columns: 33.3% 33.3% 33.3%;
+        grid-template-columns: 1fr 1fr 1fr; /*Esto es lo mismo que las dos líneas anteriores*/
+        grid-template-columns: repeat(3, 1fr) ; /*Esto es lo mismo que las dos líneas anteriores*/
+        /*grid-template-rows: 200px 800px ;
+        grid: 200px 800px/ 300px 300px; /*Esto es lo mismo que describir grid-template-columns: 200px 800px; y grid-template-rows: 200px 800px  */
+        column-gap: 2rem; /*Es como el margin de grid */ 
+    }
+} 
+
+.servicio{
+    display: flex; /*Ordena todo de derecha a izq*/
+    flex-direction: column; 
+    align-items: center; 
+    
+}
+.servicio p{
+    line-height: 2; /*aumenta el interlineado del texto en el párafo */
+    text-align: justify;
+}
+.servicio h3{
+    color: var(--secundario);
+    font-weight: normal;
+}
+
+.servicio .iconos{
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%; /*Con esto podemos generar el fondo con color amarillo de forma redondeada */
+    display: flex;
+    justify-content: space-evenly; /*alinear de forma horizontal */
+    align-items: center; /*alinear de forma vertical */
+}
+
+/*CONTACTO*/
+.formulario{
+  background-color: var(--gris);
+  width: min(60rem, 100%);/*Utilizará el valor mas pequeño para poner la zona del formulario, esto se podría hacer en mq*/
+  margin: 0 auto; /*cuando sea un elemento de tipo block y cuando su padre no sea display_flex*/
+  padding: 3rem;
+  border-radius: 1rem;
+}
+
+.formulario fieldset{
+  border:none; /*quitamos la liena que rodeaba al formulario*/
+}
+
+.formulario legend{
+  text-align: center;
+  font-size: 1.8rem;
+  text-transform: uppercase; /*para ponerle mayúscula*/
+  font: weight 700 ; /*para ponerlo en negrillas*/
+  margin-bottom: 2rem; /*para separar los inputs*/
+  color: var(--primario);
+}
+
+
+.campo{
+  margin-bottom: 1rem; /*Para aumentar el espacio entre un campo y otro del form*/
+}
+
+.campo label{
+  color: var(--blanco);
+  font-weight: bold;
+  margin-bottom: .5rem;
+  display: block; /*con esto se organiza uno debajo de otro*/
+}
+
+.input-text{
+  width: 100%; /*con esto el label y el espacio para escribir toman todo el espacio disponible*/
+  border: none;
+  padding: 1.5rem;
+  border-radius: .5rem;
+
+}
+
+.derechos p{
+  text-align: center;
+}
